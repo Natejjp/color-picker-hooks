@@ -7,8 +7,8 @@ export function App() {
 
   useEffect(() => {
     setHue(Math.floor(Math.random() * 360))
-    setSaturation(Math.floor(Math.random() * 360))
-    setLighting(Math.floor(Math.random() * 360))
+    setSaturation(Math.floor(Math.random() * 100))
+    setLighting(Math.floor(Math.random() * 50))
   }, [])
 
   function handleHueChange(event) {
@@ -22,15 +22,19 @@ export function App() {
     setLighting(event.target.value)
   }
 
+  function handleRandom(event) {
+    setHue(Math.floor(Math.random() * 360))
+    setSaturation(Math.floor(Math.random() * 100))
+    setLighting(Math.floor(Math.random() * 50))
+  }
+
   return (
-    <>
+    <main>
       <h1>Color Picker</h1>
       <div
         className="box"
         style={{ backgroundColor: `hsl(${hue}, ${saturation}%, ${lighting}%)` }}
-      >
-        hello
-      </div>
+      ></div>
       <p>H: {hue}</p>
       <input type="range" value={hue} max="360" onInput={handleHueChange} />
       <p>S: {saturation}</p>
@@ -47,6 +51,7 @@ export function App() {
         max="50"
         onInput={handleLightingChange}
       />
-    </>
+      <button onClick={handleRandom}>Random Color</button>
+    </main>
   )
 }
