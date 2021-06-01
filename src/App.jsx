@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export function App() {
   const [hue, setHue] = useState(0)
   const [saturation, setSaturation] = useState(0)
   const [lighting, setLighting] = useState(0)
+
+  useEffect(() => {
+    setHue(Math.floor(Math.random() * 360))
+    setSaturation(Math.floor(Math.random() * 360))
+    setLighting(Math.floor(Math.random() * 360))
+  }, [])
 
   function handleHueChange(event) {
     setHue(event.target.value)
